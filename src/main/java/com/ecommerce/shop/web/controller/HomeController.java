@@ -16,11 +16,11 @@ public class HomeController {
     @Autowired
     ProductService productServiceImpl;
 
-    @GetMapping("/index1")
+    @GetMapping("/index")
     public String getIndex1(Model model){
         List<Product> productList = productServiceImpl.findAll();
         model.addAttribute("products", productList);
-        return "index-page";
+        return "index";
     }
 
     @GetMapping("/about")
