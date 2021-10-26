@@ -33,4 +33,8 @@ public class ProductController {
         productServiceImpl.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+    @PatchMapping("/")
+    public Product updateProduct(@RequestBody Product product){
+        return productServiceImpl.update(product);
+    }
 }
