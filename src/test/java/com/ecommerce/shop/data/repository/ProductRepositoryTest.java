@@ -1,5 +1,6 @@
 package com.ecommerce.shop.data.repository;
 
+import com.ecommerce.shop.Service.ProductService;
 import com.ecommerce.shop.data.model.Currency;
 import com.ecommerce.shop.data.model.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductRepositoryTest {
     @Autowired
     ProductRepository productRepositoryImpl;
+    @Autowired
+    ProductService productServiceImpl;
 
 
     @BeforeEach
@@ -70,5 +73,12 @@ class ProductRepositoryTest {
         assertThat(productRepositoryImpl.findById(110L).orElse(null)).isNotNull();
         productRepositoryImpl.deleteById(110L);
         assertThat(productRepositoryImpl.findById(110L).orElse(null)).isNull();
+    }
+    @Test
+    public void updateProduct(){
+        Product productToUpdate = productRepositoryImpl.findById(110L).orElse(null);
+        Product updatedProduct = null;
+                assertThat(updatedProduct.getId().equals(111L));
+
     }
 }

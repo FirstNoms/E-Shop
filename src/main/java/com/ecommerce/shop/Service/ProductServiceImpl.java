@@ -32,4 +32,23 @@ public class ProductServiceImpl implements ProductService {
     public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public Product update(Product product) {
+        Product productToUpdate = productRepository.findById(product.getId()).orElse(null);
+        if (product.getName() != null){
+            productToUpdate.setName(product.getName());
+        }
+        if (product.getPrice() != null){
+            productToUpdate.setPrice(product.getPrice());
+        }
+        if (product.getCurrency() != null){
+            productToUpdate.setCurrency(product.getCurrency());
+        }
+        if (product.getDetails() != null){
+            productToUpdate.setDetails(product.getDetails());
+        }
+        productRepository.save(productToUpdate);
+        return productToUpdate;
+    }
 }
